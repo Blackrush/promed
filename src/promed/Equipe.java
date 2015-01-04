@@ -5,6 +5,7 @@ package promed;
  */
 public class Equipe {
     private String region;
+    private DirReg dirReg;
 
     public Equipe() {
         this.region = "";
@@ -25,10 +26,26 @@ public class Equipe {
         this.region = region;
     }
 
+    public DirReg getDirReg() {
+        return dirReg;
+    }
+
+    public void setDirReg(DirReg dirReg) {
+        if (dirReg == null) {
+            throw new NullPointerException();
+        }
+        this.dirReg = dirReg;
+    }
+
+    public void eraseDirReg() {
+        this.dirReg = null;
+    }
+
     @Override
     public String toString() {
         return "Equipe{" +
                 "region='" + region + '\'' +
+                ", dirReg=" + dirReg +
                 '}';
     }
 
