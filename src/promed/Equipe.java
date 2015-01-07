@@ -1,65 +1,42 @@
 package promed;
 
-/**
- * @author Antoine CHAUVIN INFOB1
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Equipe {
     private String region;
-    private DirReg dirReg;
-
-    public Equipe() {
-        this.region = "";
-    }
-
-    public Equipe(String region) {
-        this.region = region;
-    }
+    private List<DirReg> directeurs = new ArrayList<DirReg>();
+    private List<Vm> visiteurs = new ArrayList<Vm>();
 
     public String getRegion() {
         return region;
     }
 
     public void setRegion(String region) {
-        if (region == null) {
-            throw new NullPointerException();
-        }
         this.region = region;
     }
 
-    public DirReg getDirReg() {
-        return dirReg;
+    public List<DirReg> getDirecteurs() {
+        return directeurs;
     }
 
-    public void setDirReg(DirReg dirReg) {
-        if (dirReg == null) {
-            throw new NullPointerException();
-        }
-        this.dirReg = dirReg;
+    public void setDirecteurs(List<DirReg> directeurs) {
+        this.directeurs = directeurs;
     }
 
-    public void eraseDirReg() {
-        this.dirReg = null;
+    public void addDirecteur(DirReg dir) {
+        this.directeurs.add(dir);
     }
 
-    @Override
-    public String toString() {
-        return "Equipe{" +
-                "region='" + region + '\'' +
-                ", dirReg=" + dirReg +
-                '}';
+    public List<Vm> getVisiteurs() {
+        return visiteurs;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Equipe equipe = (Equipe) o;
-        return region.equals(equipe.region);
+    public void setVisiteurs(List<Vm> visiteurs) {
+        this.visiteurs = visiteurs;
     }
 
-    @Override
-    public int hashCode() {
-        return region.hashCode();
+    public void addVisiteur(Vm vm) {
+        this.visiteurs.add(vm);
     }
 }

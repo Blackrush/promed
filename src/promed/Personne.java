@@ -1,40 +1,26 @@
 package promed;
 
-/**
- * @author Antoine CHAUVIN INFOB1
- */
+import java.util.List;
+
 public abstract class Personne {
-    private String nom;
+    private double smic;
+    private double primeMultiplier;
 
-    public Personne(String nom) {
-        if (nom == null) {
-            throw new NullPointerException("nom");
-        }
-        this.nom = nom;
+    public abstract List<Medicament> getMedicaments();
+
+    public double getSmic() {
+        return smic;
     }
 
-    public String getNom() {
-        return nom;
+    public void setSmic(double smic) {
+        this.smic = smic;
     }
 
-    public void setNom(String nom) {
-        if (nom == null) {
-            throw new NullPointerException();
-        }
-        this.nom = nom;
+    public double getPrimeMultiplier() {
+        return primeMultiplier;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || !(o instanceof Personne)) return false;
-
-        Personne personne = (Personne) o;
-        return nom.equals(personne.nom);
-    }
-
-    @Override
-    public int hashCode() {
-        return nom.hashCode();
+    public void setPrimeMultiplier(double primeMultiplier) {
+        this.primeMultiplier = primeMultiplier;
     }
 }

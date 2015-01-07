@@ -1,53 +1,41 @@
 package promed;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Antoine CHAUVIN INFOB1
  */
 public class DirReg extends Personne {
+    private String region;
+    private List<Vm> dirige = new ArrayList<Vm>();
 
-    private Equipe equipe;
+    public String getRegion() {
+        return region;
+    }
 
-    public DirReg(String nom, Equipe equipe) {
-        super(nom);
-        if (equipe == null) {
-            throw new NullPointerException("equipe");
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public List<Vm> getDirige() {
+        return dirige;
+    }
+
+    public void setDirige(List<Vm> dirige) {
+        this.dirige = dirige;
+    }
+
+    public void dirige(Vm vm) {
+        this.dirige.add(vm);
+    }
+
+    @Override
+    public List<Medicament> getMedicaments() {
+        List<Medicament> medicaments = new ArrayList<Medicament>();
+        for (Vm vm : dirige) {
+            medicaments.addAll(vm.getMedicaments());
         }
-        this.equipe = equipe;
-    }
-
-    public DirReg(Equipe equipe) {
-        this("", equipe);
-    }
-
-    public Equipe getEquipe() {
-        return equipe;
-    }
-
-    public void setEquipe(Equipe equipe) {
-        this.equipe = equipe;
-    }
-
-    @Override
-    public String toString() {
-        return "DirReg{" +
-                "nom=" + getNom() +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-
-        DirReg dirReg = (DirReg) o;
-        return equipe.equals(dirReg.equipe);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + equipe.hashCode();
-        return result;
+        return medicaments;
     }
 }
